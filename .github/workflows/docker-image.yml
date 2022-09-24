@@ -31,7 +31,7 @@ jobs:
         push: true
         platforms: linux/amd64
         tags: ${{ steps.get_version.outputs.VERSION }}
-        labels: image-judger
+        image: image-judger
     - name: Build and push image-judger-scheduler
       uses: docker/build-push-action@v2
       with:
@@ -39,7 +39,7 @@ jobs:
         push: true
         platforms: linux/amd64
         tags: ${{ steps.get_version.outputs.VERSION }}
-        labels: image-judger-scheduler
+        image: image-judger-scheduler
     - name: Build and push image-web-service
       uses: docker/build-push-action@v2
       with:
@@ -47,4 +47,4 @@ jobs:
         push: true
         platforms: linux/amd64
         tags: ${{ steps.get_version.outputs.VERSION }}
-        labels: image-web-service
+        image: image-web-service
