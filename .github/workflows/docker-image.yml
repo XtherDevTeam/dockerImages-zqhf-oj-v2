@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build image-judger
-      run: docker build ./judger --file Dockerfile --tag image-judger:$(date +%s)
+      run: docker build ./judger --tag image-judger:$(date +%s)
     - name: Build image-judger-scheduler
-      run: docker build ./judger-scheduler --file Dockerfile --tag image-judger-scheduler:$(date +%s)
+      run: docker build ./judger-scheduler --tag image-judger-scheduler:$(date +%s)
     - name: Build image-web-service
-      run: docker build ./web-service --file Dockerfile --tag image-web-service:$(date +%s)
+      run: docker build ./web-service --tag image-web-service:$(date +%s)
