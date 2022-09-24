@@ -29,21 +29,18 @@ jobs:
         context: ./judger
         push: true
         platforms: linux/amd64
-        tags: ${{ steps.get_version.outputs.VERSION }}
-        image: image-judger
+        tags: xiaokang00010/image-judger:${{ steps.get_version.outputs.VERSION }}
     - name: Build and push image-judger-scheduler
       uses: docker/build-push-action@v2
       with:
         context: ./judger-scheduler
         push: true
         platforms: linux/amd64
-        tags: ${{ steps.get_version.outputs.VERSION }}
-        image: image-judger-scheduler
+        tags: xiaokang00010/image-judger-scheduler:${{ steps.get_version.outputs.VERSION }}
     - name: Build and push image-web-service
       uses: docker/build-push-action@v2
       with:
         context: ./web-service
         push: true
         platforms: linux/amd64
-        tags: ${{ steps.get_version.outputs.VERSION }}
-        image: image-web-service
+        tags: xiaokang00010/image-web-service:${{ steps.get_version.outputs.VERSION }}
