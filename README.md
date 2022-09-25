@@ -13,9 +13,9 @@ docker pull xiaokang00010/image-web-service
 3. Create and start containers
 
 ```bash
-docker container create web -p <oj port>:5914 xiaokang00010/image-web-service
-docker container create judger-1 xiaokang00010/image-judger
-docker container create judger-scheduler xiaokang00010/image-judger-scheduler
+docker container create --name web -p <oj port>:5914 xiaokang00010/image-web-service
+docker container create --name judger-1 xiaokang00010/image-judger
+docker container create --name judger-scheduler xiaokang00010/image-judger-scheduler
 docker container start web
 docker container start judger-1
 docker container start judger-scheduler
