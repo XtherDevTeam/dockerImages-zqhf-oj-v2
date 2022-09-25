@@ -5,7 +5,7 @@ RUN     echo -e "LANG=\"en_US.UTF-8\"" > /etc/default/local
 ENV     DEBIAN_FRONTEND=noninteractive
 RUN     sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN     apt update
-RUN     apt install git cmake make g++ gcc python3 python3-pip ssh libseccomp-dev net-tools -y
+RUN     apt install git cmake make g++ gcc python3 python3-pip ssh libseccomp-dev net-tools vim -y
 RUN     mkdir -p /var
 RUN     git clone https://github.com/XtherDevTeam/zqhf-oj-v2 /var/zqhf-oj-v2
 RUN     git clone https://github.com/QingdaoU/Judger.git /var/Judger
