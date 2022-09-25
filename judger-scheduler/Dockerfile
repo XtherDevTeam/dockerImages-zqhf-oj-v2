@@ -5,10 +5,10 @@ RUN     echo -e "LANG=\"en_US.UTF-8\"" > /etc/default/local
 ENV     DEBIAN_FRONTEND=noninteractive
 RUN     sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN     apt update
-RUN     apt install git python3 python3-pip ssh -y
+RUN     apt install git python3 python3-pip ssh net-tools -y
 RUN     mkdir -p /var
 RUN     git clone https://github.com/XtherDevTeam/zqhf-oj-v2 /var/zqhf-oj-v2
 RUN     pip3 install psutil py-cpuinfo flask flask_cors
-CMD     [ "/bin/bash", "-c", "cd /var/zqhf-oj-v2/judgeScheduler ; ./judgeServer.py" ]
+CMD     [ "/bin/bash", "-c", "ifconfig ; cd /var/zqhf-oj-v2/judgeScheduler ; ./judgeServer.py" ]
 EXPOSE  22
 EXPOSE  5918
