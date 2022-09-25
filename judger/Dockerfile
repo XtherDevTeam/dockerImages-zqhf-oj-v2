@@ -13,5 +13,6 @@ RUN     cd /var/Judger ; mkdir build && cd build && cmake .. && make && make ins
 RUN     cd /var/Judger/bindings/Python/ ; python3 setup.py install
 RUN     pip3 install psutil py-cpuinfo flask flask_cors
 RUN     cd /var/zqhf-oj-v2/judge
+CMD     [ "/bin/bash", "-c", "cd /var/zqhf-oj-v2/judge ; ./judgeServer.py" ]
 EXPOSE  22
 EXPOSE  5917

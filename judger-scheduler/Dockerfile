@@ -9,6 +9,7 @@ RUN     apt install git python3 python3-pip ssh -y
 RUN     mkdir -p /var
 RUN     git clone https://github.com/XtherDevTeam/zqhf-oj-v2 /var/zqhf-oj-v2
 RUN     pip3 install psutil py-cpuinfo flask flask_cors
-RUN     cd /var/zqhf-oj-v2/judgeScheduler
+RUN     cd /var/zqhf-oj-v2/judgeScheduler ; ./judgerServer.py
+CMD     [ "/bin/bash", "-c", "cd /var/zqhf-oj-v2/judgeScheduler ; ./judgeServer.py" ]
 EXPOSE  22
 EXPOSE  5918
