@@ -16,7 +16,7 @@ RUN     service nginx stop
 RUN     cd /var/zqhf-oj-v2/backend/src ; echo 'import backend\nbackend.init_db()\nbackend.connect_db()\nbackend.register_user("admin", "zqhf-oj-v2", 2)\nexit()\n' | python3
 CMD     ["/bin/bash", "-c", "\
             ifconfig ;\
-            echo Congratulations! You've finally installed the whole Online Judge system. Now you should follow the instructions in README.md to edit configs in your Docker container. ;\
+            echo Congratulations! You\'ve finally installed the whole Online Judge system. Now you should follow the instructions in README.md to edit configs in your Docker container. ;\
             cd /var/zqhf-oj-v2/backend/src ; service nginx start ; gunicorn -w 4 -b 0.0.0.0:9013 app:app"]
 EXPOSE  22
 EXPOSE  5914
