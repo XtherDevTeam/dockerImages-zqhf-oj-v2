@@ -2,7 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    tags:
+      - '*'
 
 jobs:
 
@@ -12,11 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Get Previous tag
-      id: previoustag
-      uses: "WyriHaximus/github-action-get-previous-tag@v1"
-      with:
-        fallback: 1.0.0
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
       
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -32,18 +31,18 @@ jobs:
         context: ./judger
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger:${{ steps.previoustag.outputs.tag }}
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger:${{steps.tag.outputs.tag}}
     - name: Build and push image-judger-scheduler
       uses: docker/build-push-action@v2
       with:
         context: ./judger-scheduler
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:${{ steps.previoustag.outputs.tag }}
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:${{steps.tag.outputs.tag}}
     - name: Build and push image-web-service
       uses: docker/build-push-action@v2
       with:
         context: ./web-service
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-web-service:${{ steps.previoustag.outputs.tag }}
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-web-service:${{steps.tag.outputs.tag}}
