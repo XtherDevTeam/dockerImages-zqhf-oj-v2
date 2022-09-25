@@ -33,7 +33,7 @@ jobs:
         context: ./judger
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger:${{steps.tag.outputs.tag}} ${{ secrets.DOCKERUSERNAME }}/image-judger:latest
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger:${{steps.tag.outputs.tag}},${{ secrets.DOCKERUSERNAME }}/image-judger:latest
         
   build-2:
 
@@ -61,7 +61,7 @@ jobs:
         context: ./judger-scheduler
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:${{steps.tag.outputs.tag}} ${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:latest
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:${{steps.tag.outputs.tag}},${{ secrets.DOCKERUSERNAME }}/image-judger-scheduler:latest
         
         
   build-3:
@@ -90,4 +90,4 @@ jobs:
         context: ./web-service
         push: true
         platforms: linux/amd64
-        tags: ${{ secrets.DOCKERUSERNAME }}/image-web-service:${{steps.tag.outputs.tag}} ${{ secrets.DOCKERUSERNAME }}/image-web-service:latest
+        tags: ${{ secrets.DOCKERUSERNAME }}/image-web-service:${{steps.tag.outputs.tag}},${{ secrets.DOCKERUSERNAME }}/image-web-service:latest
