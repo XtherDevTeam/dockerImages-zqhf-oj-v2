@@ -15,6 +15,6 @@ RUN     cd /var/zqhf-oj-v2/scripts ; ./daemon.py install page ; ./daemon.py inst
 RUN     service nginx stop
 RUN     cd /var/zqhf-oj-v2/backend/src ; echo 'import backend\nbackend.init_db()\nbackend.connect_db()\nbackend.register_user("admin", "zqhf-oj-v2", 2)\nexit()\n' | python3
 RUN     echo "Congratulations! You've finally installed the whole Online Judge system. Now you should follow the instructions in README.md to edit configs in your Docker container.\n" > /var/ok.txt
-CMD     ["/bin/bash", "-c", "ifconfig ; cat /var/ok.txt ; cd /var/zqhf-oj-v2/backend/src ; service nginx start ; gunicorn -w 4 -b 0.0.0.0:9013 app:app"]
+CMD     ["/bin/bash", "-c", "ifconfig ; cat /var/ok.txt ; cd /var/zqhf-oj-v2/backend/src ; service nginx start ; python3 app.py"]
 EXPOSE  22
 EXPOSE  5914
