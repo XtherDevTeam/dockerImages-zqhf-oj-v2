@@ -36,12 +36,12 @@ docker logs --tail 100 judger-scheduler # use ^C to exit
 Use the following command to connect to container.
 
 ```bash
-docker container exec web /bin/bash
+docker container -it exec web /bin/bash
 ```
 
 Then, chdir to `/var/zqhf-oj-v2/backend/src/`
 
-Edit the `config.json`, replace the `judger-server-address` with the address of container `judger-scheduler` like `<ip address>:5917`.
+Edit the `config.json`, replace the `judger-server-address` with the address of container `judger-scheduler` like `<ip address>:5918`.
 
 And, restart the `web` container.
 
@@ -50,7 +50,7 @@ And, restart the `web` container.
 Use the following command to connect to container.
 
 ```bash
-docker container exec judger-scheduler /bin/bash
+docker container -it exec judger-scheduler /bin/bash
 ```
 
 Then, edit `/var/zqhf-oj-v2/judgeScheduler/config.py`, set `judger_hosts` to `["<judger-1 IP>:5917"]`, if you have not only one container for judge. You can set `judger_hosts` to `["<judger-1 IP>:5917", "<judger-2 IP>:5917", "<judger-... IP>:5917"]`
